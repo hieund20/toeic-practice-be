@@ -40,4 +40,9 @@ public class QuestionController {
     public void delete(@PathVariable UUID id) {
         questionService.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public QuestionResponse getById(@PathVariable UUID id) {
+        return questionService.getById(id);
+    }
 }

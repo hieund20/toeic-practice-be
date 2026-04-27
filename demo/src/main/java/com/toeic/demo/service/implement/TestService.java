@@ -31,13 +31,12 @@ public class TestService implements ITestService {
                 test.getParts().stream()
                         .sorted(Comparator.comparing(TestPart::getPartNumber))
                         .map(part -> new PartResponse(
+                                part.getId(),
                         part.getPartNumber(),
-
                         part.getQuestions().stream()
                                 .filter(q -> q.getGroup() == null)
                                 .map(this::mapQuestion)
                                 .toList(),
-
                         part.getGroups().stream()
                                 .map(group -> new GroupResponse(
                                         group.getId(),

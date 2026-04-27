@@ -16,4 +16,6 @@ public interface IQuestionService {
     QuestionResponse update(UUID id, QuestionRequest req);
 
     List<QuestionResponse> getByGroup(UUID groupId);
+
+    QuestionResponse getById(UUID id);
 }

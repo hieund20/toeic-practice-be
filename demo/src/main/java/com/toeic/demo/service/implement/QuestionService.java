@@ -75,6 +75,14 @@ public class QuestionService implements IQuestionService {
                 .stream().map(this::map).toList();
     }
 
+    @Override
+    public QuestionResponse getById(UUID id) {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Question not found"));
+
+        return map(question);
+    }
+
     private QuestionResponse map(Question q) {
         return new QuestionResponse(
                 q.getId(),
