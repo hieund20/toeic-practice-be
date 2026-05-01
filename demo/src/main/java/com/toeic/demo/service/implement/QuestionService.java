@@ -94,7 +94,8 @@ public class QuestionService implements IQuestionService {
                         .map(a -> new AnswerResponse(
                                 a.getId(),
                                 a.getContent(),
-                                a.getAnswerOrder()
+                                a.getAnswerOrder(),
+                                a.getQuestion().getId()
                         ))
                         .toList()
         );

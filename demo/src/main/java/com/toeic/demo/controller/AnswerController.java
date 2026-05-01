@@ -30,4 +30,17 @@ public class AnswerController {
     public void delete(@PathVariable UUID id) {
         answerService.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public AnswerResponse getById(@PathVariable UUID id) {
+        return answerService.getById(id);
+    }
+
+    @PutMapping("/{id}")
+    public AnswerResponse update(
+            @PathVariable UUID id,
+            @RequestBody AnswerRequest req
+    ) {
+        return answerService.update(id, req);
+    }
 }

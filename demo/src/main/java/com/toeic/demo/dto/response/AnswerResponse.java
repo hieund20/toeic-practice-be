@@ -11,4 +11,5 @@ public class AnswerResponse {
     private UUID id;
     private String content;
     private Integer answerOrder;
+    private UUID questionId;
 }

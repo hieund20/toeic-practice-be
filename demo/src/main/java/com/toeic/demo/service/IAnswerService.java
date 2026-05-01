@@ -13,4 +13,7 @@ public interface IAnswerService {
 
     void delete(UUID id);
 
+    AnswerResponse getById(UUID id);
+
+    AnswerResponse update(UUID id, AnswerRequest req);
 }

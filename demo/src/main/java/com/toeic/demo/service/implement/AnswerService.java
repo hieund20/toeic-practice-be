@@ -45,11 +45,34 @@ public class AnswerService implements IAnswerService {
         answerRepository.deleteById(id);
     }
 
+    @Override
+    public AnswerResponse getById(UUID id) {
+        Answer answer = answerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Answer not found"));
+
+        return map(answer);
+    }
+
+    @Override
+    public AnswerResponse update(UUID id, AnswerRequest req) {
+        Answer answer = answerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Answer not found"));
+
+        answer.setContent(req.getContent());
+        answer.setIsCorrect(req.getIsCorrect());
+        answer.setAnswerOrder(req.getAnswerOrder());
+
+        answerRepository.save(answer);
+
+        return map(answer);
+    }
+
     private AnswerResponse map(Answer a) {
         return new AnswerResponse(
                 a.getId(),
                 a.getContent(),
-                a.getAnswerOrder()
+                a.getAnswerOrder(),
+                a.getQuestion().getId()
         );
     }
 }

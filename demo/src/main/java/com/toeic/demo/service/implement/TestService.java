@@ -97,7 +97,8 @@ public class TestService implements ITestService {
                         .map(a -> new AnswerResponse(
                                 a.getId(),
                                 a.getContent(),
-                                a.getAnswerOrder()
+                                a.getAnswerOrder(),
+                                a.getQuestion().getId()
                         ))
                         .toList()
         );
