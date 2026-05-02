@@ -90,14 +90,16 @@ public class QuestionService implements IQuestionService {
                 q.getImageUrl(),
                 q.getAudioUrl(),
                 q.getQuestionOrder(),
-                q.getAnswers().stream()
+                q.getAnswers() == null ? List.of() :
+                        q.getAnswers().stream()
                         .map(a -> new AnswerResponse(
                                 a.getId(),
                                 a.getContent(),
                                 a.getAnswerOrder(),
                                 a.getQuestion().getId()
                         ))
-                        .toList()
+                        .toList(),
+                q.getTestPart().getId()
         );
     }
 }

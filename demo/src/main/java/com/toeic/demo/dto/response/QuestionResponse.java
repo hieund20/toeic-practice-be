@@ -15,4 +15,5 @@ public class QuestionResponse {
     private String audioUrl;
     private Integer questionOrder;
     private List<AnswerResponse> answers;
+    private UUID testPartId;
 }

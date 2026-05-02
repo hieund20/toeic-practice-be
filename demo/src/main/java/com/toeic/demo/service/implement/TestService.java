@@ -100,7 +100,8 @@ public class TestService implements ITestService {
                                 a.getAnswerOrder(),
                                 a.getQuestion().getId()
                         ))
-                        .toList()
+                        .toList(),
+                q.getTestPart().getId()
         );
     }
 }
