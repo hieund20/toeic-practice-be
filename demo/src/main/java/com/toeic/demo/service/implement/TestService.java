@@ -98,7 +98,8 @@ public class TestService implements ITestService {
                                 a.getId(),
                                 a.getContent(),
                                 a.getAnswerOrder(),
-                                a.getQuestion().getId()
+                                a.getQuestion().getId(),
+                                a.getIsCorrect()
                         ))
                         .toList(),
                 q.getTestPart().getId()

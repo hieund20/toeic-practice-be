@@ -36,4 +36,9 @@ public class TestPartController {
     public void delete(@PathVariable UUID id) {
         testPartService.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public TestPartResponse getById(@PathVariable UUID id) {
+        return testPartService.getById(id);
+    }
 }

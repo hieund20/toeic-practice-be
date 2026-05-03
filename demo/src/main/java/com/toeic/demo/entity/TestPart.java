@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,8 +30,9 @@ public class TestPart {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "testPart", fetch = FetchType.LAZY)
+    @OrderBy("questionOrder ASC")
     @JsonIgnore
-    private Set<Question> questions;
+    private Set<Question> questions = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "testPart", fetch = FetchType.LAZY)
     @JsonIgnore

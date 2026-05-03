@@ -31,14 +31,14 @@ public class TestPartService implements ITestPartService {
 
         TestPart saved = testPartRepository.save(part);
 
-        return new TestPartResponse(saved.getId(), saved.getPartNumber());
+        return new TestPartResponse(saved.getId(), saved.getTest().getId(), saved.getPartNumber());
     }
 
     @Override
     public List<TestPartResponse> getByTest(UUID testId) {
         return testPartRepository.findByTestIdOrderByPartNumberAsc(testId)
                 .stream()
-                .map(p -> new TestPartResponse(p.getId(), p.getPartNumber()))
+                .map(p -> new TestPartResponse(p.getId(), p.getTest().getId(), p.getPartNumber()))
                 .toList();
     }
 
@@ -53,11 +53,19 @@ public class TestPartService implements ITestPartService {
 
         TestPart updated = testPartRepository.save(part);
 
-        return new TestPartResponse(updated.getId(), updated.getPartNumber());
+        return new TestPartResponse(updated.getId(), updated.getTest().getId(), updated.getPartNumber());
     }
 
     @Override
     public void delete(UUID id) {
         testPartRepository.deleteById(id);
+    }
+
+    @Override
+    public TestPartResponse getById(UUID id) {
+        TestPart part = testPartRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Part not found"));
+
+        return new TestPartResponse(part.getId(), part.getTest().getId(), part.getPartNumber());
     }
 }

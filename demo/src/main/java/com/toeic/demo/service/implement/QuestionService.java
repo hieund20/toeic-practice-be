@@ -96,7 +96,8 @@ public class QuestionService implements IQuestionService {
                                 a.getId(),
                                 a.getContent(),
                                 a.getAnswerOrder(),
-                                a.getQuestion().getId()
+                                a.getQuestion().getId(),
+                                a.getIsCorrect()
                         ))
                         .toList(),
                 q.getTestPart().getId()

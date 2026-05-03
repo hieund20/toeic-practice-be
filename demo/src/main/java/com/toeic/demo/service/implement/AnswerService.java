@@ -72,7 +72,8 @@ public class AnswerService implements IAnswerService {
                 a.getId(),
                 a.getContent(),
                 a.getAnswerOrder(),
-                a.getQuestion().getId()
+                a.getQuestion().getId(),
+                a.getIsCorrect()
         );
     }
 }

@@ -12,4 +12,5 @@ public class AnswerResponse {
     private String content;
     private Integer answerOrder;
     private UUID questionId;
+    private Boolean isCorrect;
 }

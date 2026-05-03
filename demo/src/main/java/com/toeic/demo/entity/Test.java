@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +22,6 @@ public class Test {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY)
-    private List<TestPart> parts;
+    @OneToMany(mappedBy = "test")
+    private Set<TestPart> parts;
 }

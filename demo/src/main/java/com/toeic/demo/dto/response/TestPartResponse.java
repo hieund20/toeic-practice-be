@@ -9,5 +9,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TestPartResponse {
     private UUID id;
+    private UUID testId;
     private Integer partNumber;
 }

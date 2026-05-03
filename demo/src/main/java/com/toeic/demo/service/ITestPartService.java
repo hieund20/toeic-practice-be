@@ -15,4 +15,6 @@ public interface ITestPartService {
     TestPartResponse update(UUID id, TestPartRequest request);
 
     void delete(UUID id);
+
+    TestPartResponse getById(UUID id);
 }
