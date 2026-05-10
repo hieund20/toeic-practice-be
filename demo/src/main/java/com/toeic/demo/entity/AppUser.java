@@ -1,5 +1,6 @@
 package com.toeic.demo.entity;
 
+import com.toeic.demo.constants.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,4 +30,10 @@ public class AppUser {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
