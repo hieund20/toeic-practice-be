@@ -17,7 +17,7 @@ public class AuthService implements IAuthService {
 
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-
+    private final JwtService jwtService;
 
     @Override
     public AuthResponse register(RegisterRequest request) {
@@ -36,7 +36,8 @@ public class AuthService implements IAuthService {
         return new AuthResponse(
                 "Register success",
                 user.getEmail(),
-                user.getRole().name()
+                user.getRole().name(),
+                null
         );
     }
 
@@ -49,10 +50,16 @@ public class AuthService implements IAuthService {
             throw new RuntimeException("Wrong password");
         }
 
+        String token = jwtService.generateToken(
+                user.getEmail(),
+                user.getRole().name()
+        );
+
         return new AuthResponse(
                 "Login success",
                 user.getEmail(),
-                user.getRole().name()
+                user.getRole().name(),
+                token
         );
     }
 }
