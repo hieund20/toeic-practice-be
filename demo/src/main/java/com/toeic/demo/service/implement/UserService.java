@@ -8,6 +8,8 @@ import com.toeic.demo.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService {
@@ -26,11 +28,26 @@ public class UserService implements IUserService {
         user.setName(req.getName());
 
         AppUser saved = userRepository.save(user);
+        return mapToResponse(saved);
+    }
+
+    @Override
+    public UserResponse getById(UUID id) {
+        AppUser user = userRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+        return mapToResponse(user);
+    }
+
+    private UserResponse mapToResponse(AppUser user) {
 
         return new UserResponse(
-                saved.getId(),
-                saved.getEmail(),
-                saved.getName()
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole().name(),
+                user.getCreatedAt()
         );
     }
 }

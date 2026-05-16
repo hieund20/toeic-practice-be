@@ -8,10 +8,16 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class UserResponse {
+public class TestAttemptResponse {
     private UUID id;
-    private String email;
-    private String name;
-    private String role;
-    private LocalDateTime createdAt;
+
+    private String testName;
+
+    private Integer score;
+
+    private LocalDateTime startedAt;
+
+    private LocalDateTime submittedAt;
+
+    private UUID userId;
 }

@@ -37,7 +37,8 @@ public class AuthService implements IAuthService {
                 "Register success",
                 user.getEmail(),
                 user.getRole().name(),
-                null
+                null,
+                user.getId()
         );
     }
 
@@ -59,7 +60,8 @@ public class AuthService implements IAuthService {
                 "Login success",
                 user.getEmail(),
                 user.getRole().name(),
-                token
+                token,
+                user.getId()
         );
     }
 }

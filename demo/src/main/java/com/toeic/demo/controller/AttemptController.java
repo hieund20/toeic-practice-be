@@ -2,6 +2,7 @@ package com.toeic.demo.controller;
 
 import com.toeic.demo.dto.response.ReviewResponse;
 import com.toeic.demo.service.IReviewService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ public class AttemptController {
     private final IReviewService reviewService;
 
     @GetMapping("/{id}/review")
+    @Operation(summary = "This api used to see the review for result test")
     public ReviewResponse getReview(@PathVariable UUID id) {
         return reviewService.getReview(id);
     }
