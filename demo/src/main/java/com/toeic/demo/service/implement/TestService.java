@@ -34,6 +34,7 @@ public class TestService implements ITestService {
                                 part.getId(),
                         part.getPartNumber(),
                         part.getQuestions().stream()
+                                .distinct()
                                 .filter(q -> q.getGroup() == null)
                                 .sorted(
                                         Comparator.comparing(
@@ -48,6 +49,7 @@ public class TestService implements ITestService {
                                         group.getContent(),
                                         group.getAudioUrl(),
                                         group.getQuestions().stream()
+                                                .distinct()
                                                 .sorted(
                                                         Comparator.comparing(
                                                                 Question::getQuestionOrder
