@@ -35,6 +35,11 @@ public class TestService implements ITestService {
                         part.getPartNumber(),
                         part.getQuestions().stream()
                                 .filter(q -> q.getGroup() == null)
+                                .sorted(
+                                        Comparator.comparing(
+                                                Question::getQuestionOrder
+                                        )
+                                )
                                 .map(this::mapQuestion)
                                 .toList(),
                         part.getGroups().stream()
@@ -43,6 +48,11 @@ public class TestService implements ITestService {
                                         group.getContent(),
                                         group.getAudioUrl(),
                                         group.getQuestions().stream()
+                                                .sorted(
+                                                        Comparator.comparing(
+                                                                Question::getQuestionOrder
+                                                        )
+                                                )
                                                 .map(this::mapQuestion)
                                                 .toList()
                                 ))

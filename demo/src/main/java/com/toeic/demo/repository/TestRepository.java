@@ -12,13 +12,14 @@ import java.util.UUID;
 public interface TestRepository extends JpaRepository<Test, UUID> {
 
     @Query("""
-    SELECT DISTINCT t
-    FROM Test t
-    LEFT JOIN FETCH t.parts p
-    LEFT JOIN FETCH p.questions q
-    LEFT JOIN FETCH p.groups g
-    WHERE t.id = :id
-    ORDER BY p.partNumber, q.questionOrder
+        SELECT DISTINCT t
+        FROM Test t
+        LEFT JOIN FETCH t.parts p
+        LEFT JOIN FETCH p.questions q
+        LEFT JOIN FETCH p.groups g
+        LEFT JOIN FETCH g.questions gq
+        WHERE t.id = :id
+        ORDER BY p.partNumber
     """)
     Optional<Test> findWithFullStructureById(UUID id);
 }
